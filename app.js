@@ -1,40 +1,29 @@
 // MODULE
-var myApp = angular.module('myApp', ['ngMessages', 'ngResource', 'ngMockE2E']);
+var myApp = angular.module('myApp', ['ngRoute']);
 
+myApp.config(function($routeProvider){
+
+    $routeProvider
+
+    .when('/', {
+        templateUrl: 'pages/main.html',
+        controller: 'mainController'
+    })
+
+    .when('/second', {
+        templateUrl: 'pages/second.html',
+        controller: 'secondController'
+    })
+
+})
 // CONTROLLERS
-myApp.controller('mainController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
+myApp.controller('mainController', ['$scope', '$log', function ($scope, $log) {
 
-    $scope.handle = '';
 
-    $scope.lowercasehandle = function(){
-        return $filter('lowercase')($scope.handle);
-    };
+}]);
 
-    $scope.characters = 5;
+myApp.controller('secondController', ['$scope', '$log', function ($scope, $log) {
 
-    $http.get('/rules')
-        .success(function(response){
-            $scope.rules = response;
-        })
-        .error(function(data, status){
-            console.log(data);
-        });
 
-    $scope.newRule = '';
 
-    $scope.addRule = function(){
-        $http.post('/rules', { rulename: $scope.newRule })
-            .success(function(result){
-
-                console.log(result);
-                $scope.rules = result;
-                $scope.newRule = '';
-
-            })
-            .error(function(data, status){
-
-                console.log(data);
-            });
-
-    }
 }]);
