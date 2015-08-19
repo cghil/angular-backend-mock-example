@@ -20,8 +20,7 @@ myApp.config(function($routeProvider){
         controller: 'secondController'
     })
 
-
-})
+});
 
 // SERVICES
 myApp.service('nameService', function(){
@@ -34,7 +33,7 @@ myApp.service('nameService', function(){
         return self.name.length;
     }
 
-})
+});
 
 // CONTROLLERS
 myApp.controller('mainController', ['$scope', '$log', "nameService", function ($scope, $log, nameService) {
