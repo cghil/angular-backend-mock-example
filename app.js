@@ -22,47 +22,23 @@ myApp.config(function($routeProvider){
 
 });
 
-// SERVICES
-myApp.service('nameService', function(){
-    
-    var self = this;
-
-    this.name = 'Corey Ghilarducci';
-
-    this.namelength = function(){
-        return self.name.length;
-    }
-
-});
 
 // CONTROLLERS
 myApp.controller('mainController', ['$scope', '$log', "nameService", function ($scope, $log, nameService) {
 
-    $scope.name = nameService.name;
 
-    $scope.$watch('name', function(){
-
-        nameService.name = $scope.name;
-    });
-
-    $log.log(nameService.name);
-    $log.log(nameService.namelength());
 
 }]);
 
 myApp.controller('secondController', ['$scope', '$log', "$routeParams", "nameService", function ($scope, $log, $routeParams, nameService) {
 
-    $scope.name = nameService.name;
-
-    $scope.$watch('name', function(){
-
-        nameService.name = $scope.name;
-        
-    });
-
-    $scope.num = $routeParams.num || 1;
-
-    $log.second = "Property from second";
-    $log.log($log);
+   
 
 }]);
+
+myApp.directive("searchResult", function(){
+    return {
+        template: '<a href="#" class="list-group-item"> <h4 class="list-group-item-heading">Doe, John</h4> <p class="list-group-item-text">555 Camino Las Ramblas Thousand Oaks, CA 94408</p></a>',
+        replace: true
+    }
+});
