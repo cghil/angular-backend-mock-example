@@ -1,7 +1,7 @@
 <label>Search</label>
-<input type="text" value="Doe"/>
+<input ng-model="person.name" type="text" value="{{ person.name }}"/>
 
 <h3>Search Results</h3>
 <div class="list-group">
-  <search-result></search-result>
+  <search-result person-object="person"></search-result>
 </div>

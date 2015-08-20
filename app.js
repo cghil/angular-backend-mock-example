@@ -42,6 +42,9 @@ myApp.controller('secondController', ['$scope', '$log', "$routeParams", function
 myApp.directive("searchResult", function(){
     return {
         templateUrl: 'directives/searchresult.html',
-        replace: true
+        replace: true,
+        scope: {
+            personObject: "="
+        }
     }
 });
